@@ -3,9 +3,9 @@ package services;
 import com.codecool.shop.model.Cart;
 import com.codecool.shop.model.CartItem;
 import com.codecool.shop.service.CartService;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
@@ -16,21 +16,24 @@ import static org.mockito.Mockito.*;
 
 class CartServiceTest {
 
-    Cart mockCart = mock(Cart.class);
-    CartService cartService = new CartService(mockCart);
-    CartItem mockItem1 = mock(CartItem.class);
-    CartItem mockItem2 = mock(CartItem.class);
-    CartItem mockItem3 = mock(CartItem.class);
+    Cart mockCart;
+    CartService cartService;
+    List<CartItem> mockCartItems;
 
-
-    List<CartItem> mockCartItems = Arrays.asList(mockItem1,mockItem2,mockItem3);
-
-
+    @BeforeEach
+    void beforeEach() {
+        mockCart = mock(Cart.class);
+        cartService = new CartService(mockCart);
+        mockCartItems = Arrays.asList(
+                mock(CartItem.class),
+                mock(CartItem.class),
+                mock(CartItem.class));
+    }
 
     @Test
     void getAllCartItems_CorrectReturn_ReturnsTrue() {
-    when(mockCart.getCartItems()).thenReturn(mockCartItems);
-    assertEquals(mockCartItems,cartService.getAllCartItems());
+        when(mockCart.getCartItems()).thenReturn(mockCartItems);
+        assertEquals(mockCartItems, cartService.getAllCartItems());
 
     }
 
