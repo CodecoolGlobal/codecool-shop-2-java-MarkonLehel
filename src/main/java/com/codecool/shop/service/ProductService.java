@@ -9,12 +9,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductService{
-    private ProductDao productDao;
-    private ProductCategoryDao productCategoryDao;
+    private final ProductDao productDao;
+    private final ProductCategoryDao productCategoryDao;
 
     public ProductService(ProductDao productDao, ProductCategoryDao productCategoryDao) {
         this.productDao = productDao;
         this.productCategoryDao = productCategoryDao;
+    }
+
+    public Product getProduct(int id){
+        return productDao.find(id);
     }
 
     public ProductCategory getProductCategory(int categoryId){

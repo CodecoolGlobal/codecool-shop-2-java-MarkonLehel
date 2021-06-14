@@ -2,6 +2,7 @@ package com.codecool.shop.controller;
 
 import com.codecool.shop.config.TemplateEngineUtil;
 import com.codecool.shop.model.Cart;
+import com.codecool.shop.service.CartService;
 import com.google.gson.JsonObject;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
@@ -18,7 +19,8 @@ import java.nio.file.Paths;
 
 @WebServlet(urlPatterns = {"/payment"})
 public class PaymentController extends HttpServlet {
-    private final Cart shoppingCart = Cart.getInstance();
+
+    private final CartService cartService = new CartService(Cart.getInstance());
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -26,7 +28,7 @@ public class PaymentController extends HttpServlet {
         WebContext context = new WebContext(req, resp, req.getServletContext());
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
 
-        context.setVariable("cart", shoppingCart);
+        context.setVariable("cart", cartService.getShoppingCart());
 
         engine.process("product/payment.html", context, resp.getWriter());
     }
@@ -35,12 +37,12 @@ public class PaymentController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         JsonObject paymentData = Util.getRequestData(req);
-        Files.write(Paths.get(shoppingCart.getOrderID() + "pson" + ".json"), paymentData.toString().getBytes());
+        Files.write(Paths.get(cartService.getCartOrderID() + "pson" + ".json"), paymentData.toString().getBytes());
 
         System.out.println("loading success page");
-        shoppingCart.clear();
+        cartService.clearCart();
         resp.sendRedirect("/success");
-
+//Mail
 //        try {
 //            MailController.getInstance().sendMail("lehel.markon@gmail.com");
 //        } catch (MessagingException e) {

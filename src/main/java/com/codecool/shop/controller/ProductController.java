@@ -8,6 +8,7 @@ import com.codecool.shop.dao.implementation.ProductDaoMem;
 import com.codecool.shop.dao.implementation.SupplierDaoMem;
 import com.codecool.shop.service.ProductService;
 import com.codecool.shop.config.TemplateEngineUtil;
+import com.codecool.shop.service.SupplierService;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
@@ -24,9 +25,14 @@ public class ProductController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        //Daos
         ProductDao productDataStore = ProductDaoMem.getInstance();
-        ProductCategoryDao productCategoryDataStore = ProductCategoryDaoMem.getInstance();
         SupplierDao supplierDataStore = SupplierDaoMem.getInstance();
+        ProductCategoryDao productCategoryDataStore = ProductCategoryDaoMem.getInstance();
+
+        //Services
+        SupplierService supplierService = new SupplierService(supplierDataStore);
         ProductService productService = new ProductService(productDataStore, productCategoryDataStore);
 
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
@@ -41,17 +47,16 @@ public class ProductController extends HttpServlet {
         } else if ((req.getParameter("categoryId") == null) && (req.getParameter("supplierId") != null)) {
             int supplierId = Integer.parseInt(req.getParameter("supplierId"));
             context.setVariable("category", null);
-            context.setVariable("supplier", supplierDataStore.find(supplierId));
+            context.setVariable("supplier", supplierService.getSupplier(supplierId));
             context.setVariable("products", productService.getProductsForSupplier(supplierId));
         } else {
-
             context.setVariable("supplier", null);
             context.setVariable("category", null);
             context.setVariable("products", productService.getAllProducts());
         }
 
         context.setVariable("allcategories", productCategoryDataStore.getAll());
-        context.setVariable("allsuppliers", supplierDataStore.getAll());
+        context.setVariable("allsuppliers", supplierService.getAllSuppliers());
 
         // Alternative setting of the template context
         // Map<String, Object> params = new HashMap<>();

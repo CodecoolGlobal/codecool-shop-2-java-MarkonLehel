@@ -2,6 +2,7 @@ package com.codecool.shop.controller;
 
 import com.codecool.shop.config.TemplateEngineUtil;
 import com.codecool.shop.model.Cart;
+import com.codecool.shop.service.CartService;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
@@ -14,14 +15,15 @@ import java.io.IOException;
 
 @WebServlet(urlPatterns = {"/success"})
 public class SuccessController extends HttpServlet {
-    private final Cart shoppingCart = Cart.getInstance();
+
+    private final CartService cartService = new CartService(Cart.getInstance());
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         System.out.println("Success page doGet");
         WebContext context = new WebContext(req, resp, req.getServletContext());
-        context.setVariable("orderId", shoppingCart.getOrderID());
+        context.setVariable("orderId", cartService.getCartOrderID());
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         engine.process("product/success.html", context, resp.getWriter());
 

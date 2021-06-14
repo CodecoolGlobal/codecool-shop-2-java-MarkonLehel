@@ -3,6 +3,7 @@ package com.codecool.shop.controller;
 import com.codecool.shop.config.TemplateEngineUtil;
 import com.codecool.shop.model.Cart;
 import com.codecool.shop.model.CartItem;
+import com.codecool.shop.service.CartService;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -20,7 +21,8 @@ import java.nio.file.Paths;
 
 @WebServlet(urlPatterns = {"/checkout"})
 public class CheckoutController extends HttpServlet {
-    private final Cart shoppingCart = Cart.getInstance();
+
+    private CartService cartService = new CartService(Cart.getInstance());
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -31,9 +33,7 @@ public class CheckoutController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("checkout doPost");
         Reader in = new BufferedReader(new InputStreamReader((req.getInputStream())));
-
 
         StringBuilder sb = new StringBuilder();
         for (int c; (c = in.read()) >= 0; )
@@ -44,10 +44,7 @@ public class CheckoutController extends HttpServlet {
         JsonObject cartJson = getCartJson();
         jsonToSave.add("cart", cartJson);
 
-        Files.write(Paths.get(shoppingCart.getOrderID() + ".json"), jsonToSave.toString().getBytes());
-
-
-        System.out.println("redirection to payment");
+        Files.write(Paths.get(cartService.getCartOrderID() + ".json"), jsonToSave.toString().getBytes());
         resp.sendRedirect("/payment");
     }
 
@@ -56,7 +53,7 @@ public class CheckoutController extends HttpServlet {
         JsonArray cartItemsArray = new JsonArray();
 
 
-        for (CartItem item : shoppingCart.getCartItems()) {
+        for (CartItem item : cartService.getAllCartItems()) {
             JsonObject cartItem = new JsonObject();
             cartItem.addProperty("name", item.getProduct().getName());
             cartItem.addProperty("quantity", item.getQuantity());
@@ -65,7 +62,7 @@ public class CheckoutController extends HttpServlet {
             cartItemsArray.add(cartItem);
         }
         cartJson.add("items", cartItemsArray);
-        cartJson.addProperty("totalPrice", shoppingCart.getTotalPrice());
+        cartJson.addProperty("totalPrice", cartService.getTotalCartPrice());
         return cartJson;
     }
 
