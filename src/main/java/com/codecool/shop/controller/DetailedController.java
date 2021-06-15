@@ -7,9 +7,12 @@ import com.codecool.shop.dao.SupplierDao;
 import com.codecool.shop.dao.implementation.ProductCategoryDaoMem;
 import com.codecool.shop.dao.implementation.ProductDaoMem;
 import com.codecool.shop.dao.implementation.SupplierDaoMem;
+import com.codecool.shop.model.Product;
 import com.codecool.shop.service.ProductCategoryService;
 import com.codecool.shop.service.ProductService;
 import com.codecool.shop.service.SupplierService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
@@ -22,6 +25,7 @@ import java.io.IOException;
 
 @WebServlet(urlPatterns = {"/product"})
 public class DetailedController extends HttpServlet {
+    private final Logger logger = Util.createLogger(DetailedController.class);
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -43,12 +47,14 @@ public class DetailedController extends HttpServlet {
 
         context.setVariable("allcategories", productCategoryService.getAllProductCategories());
         context.setVariable("allsuppliers", supplierService.getAllSuppliers());
-        context.setVariable("product", productService.getProduct(Integer.parseInt(req.getParameter("productId"))));
+        Product product = productService.getProduct(Integer.parseInt(req.getParameter("productId")));
+        context.setVariable("product", product);
         // // Alternative setting of the template context
         // Map<String, Object> params = new HashMap<>();
         // params.put("category", productCategoryDataStore.find(1));
         // params.put("products", productDataStore.getBy(productCategoryDataStore.find(1)));
         // context.setVariables(params);
+        logger.info("Detailed page of {}", product.getName());
         engine.process("product/detailed.html", context, resp.getWriter());
     }
 

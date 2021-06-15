@@ -1,6 +1,7 @@
 package com.codecool.shop.controller;
 
 import com.codecool.shop.model.Cart;
+import org.slf4j.Logger;
 
 import java.util.*;
 import javax.mail.*;
@@ -8,6 +9,7 @@ import javax.mail.internet.*;
 import javax.activation.*;
 
 public class MailController {
+    private final Logger logger = Util.createLogger(PaymentController.class);
     static Cart shoppingCart = Cart.getInstance();
 
     private static Properties prop = new Properties();
