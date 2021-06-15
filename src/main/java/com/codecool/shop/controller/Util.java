@@ -2,6 +2,8 @@ package com.codecool.shop.controller;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.BufferedReader;
@@ -20,5 +22,14 @@ public class Util {
 
         JsonParser jsonParser = new JsonParser();
         return (JsonObject) jsonParser.parse(str);
+    }
+
+    static {
+        System.setProperty("java.util.logging.SimpleFormatter.format", "[%1$tF %1$tT] [%4$-7s] %5$s %n");
+
+    }
+
+    public static <T> Logger createLogger(T clazz) {
+        return LoggerFactory.getLogger((Class<?>) clazz);
     }
 }
