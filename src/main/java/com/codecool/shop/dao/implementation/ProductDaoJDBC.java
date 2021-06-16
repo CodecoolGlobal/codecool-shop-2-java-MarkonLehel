@@ -9,14 +9,14 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductDaoDB extends DatabaseConnection implements ProductDao {
-    private static ProductDaoDB instance;
+public class ProductDaoJDBC extends DatabaseConnection implements ProductDao {
+    private static ProductDaoJDBC instance;
     private ProductCategoryDaoJDBC productCategoryDaoJDBC = ProductCategoryDaoJDBC.getInstance();
     private SupplierDaoDB supplierDaoDB = SupplierDaoDB.getInstance();
 
-    public static ProductDaoDB getInstance() {
+    public static ProductDaoJDBC getInstance() {
         if (instance == null) {
-            instance = new ProductDaoDB();
+            instance = new ProductDaoJDBC();
         }
         return instance;
     }
