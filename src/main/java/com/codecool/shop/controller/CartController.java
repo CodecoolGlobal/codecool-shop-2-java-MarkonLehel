@@ -9,6 +9,7 @@ import com.codecool.shop.service.CartService;
 import com.codecool.shop.service.ProductService;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import org.slf4j.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,6 +20,7 @@ import java.io.*;
 
 @WebServlet(urlPatterns = {"/cart"})
 public class CartController extends HttpServlet {
+    private final Logger logger = Util.createLogger(PaymentController.class);
     private final ProductDaoMem pdm = ProductDaoMem.getInstance();
     private final ProductCategoryDao pcd = ProductCategoryDaoMem.getInstance();
 
@@ -49,14 +51,13 @@ public class CartController extends HttpServlet {
         PrintWriter out = resp.getWriter();
         out.print(returnJson.toString());
         out.flush();
-
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         JsonObject jsonCartItem = Util.getRequestData(req);
         int pID = jsonCartItem.get("productID").getAsInt();
-
+        logger.info("Add: {} to cart.\n Cart id: {}", productService.getProduct(pID).getName(), cartService.getCartOrderID());
         cartService.addCartItem(productService.getProduct(pID));
     }
 
@@ -65,7 +66,7 @@ public class CartController extends HttpServlet {
 
         JsonObject jsonCartItem = Util.getRequestData(req);
         int pID = jsonCartItem.get("productID").getAsInt();
-
+        logger.info("Delete: {} from cart.\n Cart id: {}", productService.getProduct(pID).getName(), cartService.getCartOrderID());
         cartService.removeCartItem(productService.getProduct(pID));
     }
 }

@@ -18,6 +18,7 @@
         <version.plugin.jetty>9.4.30.v20200611</version.plugin.jetty>
         <version.javax.servlet.api>4.0.1</version.javax.servlet.api>
         <version.thymeleaf>3.0.11.RELEASE</version.thymeleaf>
+        <slf4j-jdk14.version>1.7.28</slf4j-jdk14.version>
     </properties>
 
     <build>
@@ -48,6 +49,18 @@
                     <!-- a page load so disabled. -->
                     <!-- <reload>automatic</reload> -->
                     <!-- <scanIntervalSeconds>1</scanIntervalSeconds> -->
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-jdk14</artifactId>
+                <version>${slf4j-jdk14.version}</version>
+                <configuration>
+                    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+                        <encoder>
+                            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
+                        </encoder>
+                    </appender>
                 </configuration>
             </plugin>
         </plugins>
@@ -86,7 +99,7 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-jdk14</artifactId>
-            <version>1.7.28</version>
+            <version>${slf4j-jdk14.version}</version>
         </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>

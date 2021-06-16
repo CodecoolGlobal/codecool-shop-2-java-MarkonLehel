@@ -7,6 +7,7 @@ import com.codecool.shop.service.CartService;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import org.slf4j.Logger;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
@@ -21,13 +22,14 @@ import java.nio.file.Paths;
 
 @WebServlet(urlPatterns = {"/checkout"})
 public class CheckoutController extends HttpServlet {
-
+    private final Logger logger = Util.createLogger(DetailedController.class);
     private CartService cartService = new CartService(Cart.getInstance());
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
+        logger.info("Checkout page");
         engine.process("product/checkout.html", context, resp.getWriter());
     }
 
@@ -45,6 +47,8 @@ public class CheckoutController extends HttpServlet {
         jsonToSave.add("cart", cartJson);
 
         Files.write(Paths.get(cartService.getCartOrderID() + ".json"), jsonToSave.toString().getBytes());
+        logger.info("GET request \"/payment\".\n Order id: {}\"", cartService.getCartOrderID());
+        logger.info("Successful checkout\n Order id: {}", cartService.getCartOrderID());
         resp.sendRedirect("/payment");
     }
 

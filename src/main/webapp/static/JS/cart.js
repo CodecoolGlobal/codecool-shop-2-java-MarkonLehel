@@ -19,8 +19,9 @@ function toggleCart() {
     cart.classList.toggle("cart-open");
     if (cart.classList.contains("cart-open")) {
         cart.style.display = "block";
-    } else
+    } else {
         cart.style.display = "none";
+    }
 }
 
 function addToCart(e) {
@@ -71,13 +72,13 @@ function refreshCart() {
             console.log(json_response)
             let cart = document.getElementById("cart");
 
-            cart.innerHTML = "<tr>\n" +
+            cart.innerHTML = "<thead><tr class='to-width'>\n" +
                 "                        <th>Name</th>\n" +
                 "                        <th>Quantity</th>\n" +
                 "                        <th>Unit price</th>\n" +
                 "                        <th>Subtotal</th>\n" +
                 "                        <th></th>\n" +
-                "                    </tr>"
+                "                    </tr></thead>"
             let domElement;
             for (let i = 0; i < json_response.items.length; i++) {
                 domElement = document.createElement("tr");
@@ -94,7 +95,7 @@ function refreshCart() {
 
                 const dButtonClasses = ["cart-item-deletebtn", "btn", "btn-danger"]
                 deleteButton.classList.add(...dButtonClasses);
-                deleteButton.innerText = "X";
+                deleteButton.innerText = "x";
                 deleteButton.addEventListener("click",e => {deleteCartItem(jsonObj.id)})
 
 
@@ -115,6 +116,7 @@ function refreshCart() {
                 domElement.appendChild(priceElement);
                 domElement.appendChild(subtotalElement);
                 domElement.appendChild(deleteButton);
+                console.log(domElement)
                 cart.appendChild(domElement);
 
             }
@@ -123,15 +125,22 @@ function refreshCart() {
             totalRow.classList.add("total-row");
             let totalTitle = document.createElement("td");
             let total = document.createElement("td");
+            let checkout = document.createElement("td");
 
             totalTitle.innerText = "Total: ";
             totalTitle.classList.add("total-title");
+
             total.classList.add("total-price");
             total.innerText = json_response.totalPrice + " USD";
 
+            checkout.insertAdjacentHTML("beforeend",
+                "           <a href=\"/checkout\">\n" +
+                "                    <button id=\"checkout\">Checkout</button>\n" +
+                "                </a>\n");
 
             totalRow.appendChild(totalTitle);
             totalRow.appendChild(total);
+            totalRow.appendChild(checkout);
             cart.appendChild(totalRow);
         });
 }
