@@ -1,69 +1,68 @@
 .glyphicon {
-    margin-right:5px;
+    margin-right: 5px;
 }
+
 /*Colors:
 #518abc
 
 */
-.thumbnail
-{
+.thumbnail {
     margin-bottom: 20px;
     padding: 0px;
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     border-radius: 0px;
 }
-.thumbnail img
-{
+
+.thumbnail img {
     margin-top: 10px;
 }
-.item.list-group-item
-{
+
+.item.list-group-item {
     float: none;
     width: 100%;
     background-color: #fff;
     margin-bottom: 10px;
 }
-.item.list-group-item:nth-of-type(odd):hover,.item.list-group-item:hover
-{
+
+.item.list-group-item:nth-of-type(odd):hover, .item.list-group-item:hover {
     background: #428bca;
 }
 
-.item.list-group-item .list-group-image
-{
+.item.list-group-item .list-group-image {
     margin-right: 10px;
 }
-.item.list-group-item .thumbnail
-{
+
+.item.list-group-item .thumbnail {
     margin-bottom: 0px;
 }
-.item.list-group-item .caption
-{
+
+.item.list-group-item .caption {
     padding: 9px 9px 0px 9px;
 }
-.item.list-group-item:nth-of-type(odd)
-{
+
+.item.list-group-item:nth-of-type(odd) {
     background: #eeeeee;
 }
 
-.item.list-group-item:before, .item.list-group-item:after
-{
+.item.list-group-item:before, .item.list-group-item:after {
     display: table;
     content: " ";
 }
 
-.item.list-group-item img
-{
+.item.list-group-item img {
     float: left;
 }
-.item.list-group-item:after
-{
+
+.item.list-group-item:after {
     clear: both;
 }
-.list-group-item-text
-{
+
+.list-group-item-text {
     margin: 0 0 11px;
 }
+
+/* Sidenav */
 
 /* The side navigation menu */
 .sidenav {
@@ -88,14 +87,50 @@
     margin: 0;
 }
 
+#sideNavMenu .card p a {
+    overflow-wrap: break-word;
+    border: sandybrown solid 1px;
+    margin: .3rem;
+    border-radius: 10px;
+    text-align: center;
+    padding: 8px 0 8px 0;
+}
+
 #sidenavTrigger {
     height: 100%; /* 100% Full-height */
     min-width: 40px; /* 0 width - change this with JavaScript */
     position: fixed; /* Stay in place */
     left: 0;
+    /* When you mouse over the navigation links, change their color */
 }
 
-.jumbotron  {
+
+/* The navigation menu links */
+.sidenav a {
+    white-space: nowrap;
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 1rem;
+    color: sandybrown;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: darkorange;
+}
+
+/* Position and style the close button (top right corner) */
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+.jumbotron {
     top: 0;
     position: fixed;
     width: 100%;
@@ -127,8 +162,8 @@
 
 .cart-open {
     background-color: #3b3b3b;
-    min-height: 300px;
-    min-width: 400px;
+    min-height: 350px;
+    min-width: 500px;
     transition: 0.2s;
     transition-timing-function: cubic-bezier(0.6, -0.28, 0.74, 0.05);
 }
@@ -144,7 +179,7 @@
     color: darkorange;
 }
 
-.cart-holder{
+.cart-holder {
     z-index: 1999;
     right: .4rem;
     overflow-x: hidden; /* Disable horizontal scroll */
@@ -160,20 +195,37 @@
     border-radius: 10px;
     padding: .7rem;
     border: #3b3b3b 2px solid;
+    border-spacing: 0 .3rem;
 }
 
-#cart tbody th{
+table {
+    border-collapse: unset;
+}
+
+#cart thead th {
     color: sandybrown;
     border-bottom: darkorange 2px solid;
     text-align: center;
+    width: 100%;
+    margin: auto;
 }
 
-#cart tbody tr th{
-    border-collapse: collapse;
+#cart tbody {
+    display: inline-block;
+    width: 100%;
 }
 
+#cart .cart-item-deletebtn {
+    width: 1rem;
+    height: 1.6rem;
+    padding: 0;
+}
 
-#cart table th,td{
+#cart table .to-width{
+    width: 100%;
+}
+
+#cart table th, td {
     color: sandybrown;
 }
 
@@ -193,15 +245,15 @@
 .total-row {
     position: absolute;
     left: 1rem;
-    bottom: .4rem;
-    width: 80%;
+    bottom: 3rem;
+    width: 83%;
     border-top: darkorange 2px solid;
 }
 
 .total-price {
     position: absolute;
     right: 1rem;
-    bottom: .1rem;
+    bottom: .3rem;
 }
 
 .content {
@@ -211,6 +263,23 @@
     text-align: center;
 
 }
+
+#main .card {
+    margin: 1rem;
+    border-radius: 10px;
+}
+
+#main .card .card-header p {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+#main .card img {
+    border-radius: 10px;
+}
+
 .content input {
     width: 33.3333333%;
     margin-left: 33.3333333%;
@@ -220,33 +289,8 @@
     margin-bottom: 2.5rem;
 }
 
-/* The navigation menu links */
-.sidenav a {
-    white-space: nowrap;
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: sandybrown;
-    display: block;
-    transition: 0.3s;
-}
-
 .navBarDropButton a {
     padding: 8px 8px 32px 8px;
-}
-
-/* When you mouse over the navigation links, change their color */
-.sidenav a:hover {
-    color: darkorange;
-}
-
-/* Position and style the close button (top right corner) */
-.sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
 }
 
 
@@ -279,7 +323,7 @@
     flex-direction: row;
 }
 
-.checkout #checkbox input{
+.checkout #checkbox input {
     margin: auto 2rem auto 33.3333%;
     width: 1rem;
 }
@@ -316,6 +360,11 @@
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
+    .sidenav {
+        padding-top: 15px;
+    }
+
+    .sidenav a {
+        font-size: 18px;
+    }
 }

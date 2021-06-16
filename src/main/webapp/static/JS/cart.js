@@ -71,13 +71,13 @@ function refreshCart() {
             console.log(json_response)
             let cart = document.getElementById("cart");
 
-            cart.innerHTML = "<tr>\n" +
+            cart.innerHTML = "<thead><tr class='to-width'>\n" +
                 "                        <th>Name</th>\n" +
                 "                        <th>Quantity</th>\n" +
                 "                        <th>Unit price</th>\n" +
                 "                        <th>Subtotal</th>\n" +
                 "                        <th></th>\n" +
-                "                    </tr>"
+                "                    </tr></thead>"
             let domElement;
             for (let i = 0; i < json_response.items.length; i++) {
                 domElement = document.createElement("tr");
@@ -94,7 +94,7 @@ function refreshCart() {
 
                 const dButtonClasses = ["cart-item-deletebtn", "btn", "btn-danger"]
                 deleteButton.classList.add(...dButtonClasses);
-                deleteButton.innerText = "X";
+                deleteButton.innerText = "x";
                 deleteButton.addEventListener("click",e => {deleteCartItem(jsonObj.id)})
 
 
@@ -115,6 +115,7 @@ function refreshCart() {
                 domElement.appendChild(priceElement);
                 domElement.appendChild(subtotalElement);
                 domElement.appendChild(deleteButton);
+                console.log(domElement)
                 cart.appendChild(domElement);
 
             }
