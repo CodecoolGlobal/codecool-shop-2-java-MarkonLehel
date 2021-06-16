@@ -19,8 +19,9 @@ function toggleCart() {
     cart.classList.toggle("cart-open");
     if (cart.classList.contains("cart-open")) {
         cart.style.display = "block";
-    } else
+    } else {
         cart.style.display = "none";
+    }
 }
 
 function addToCart(e) {
@@ -124,15 +125,22 @@ function refreshCart() {
             totalRow.classList.add("total-row");
             let totalTitle = document.createElement("td");
             let total = document.createElement("td");
+            let checkout = document.createElement("td");
 
             totalTitle.innerText = "Total: ";
             totalTitle.classList.add("total-title");
+
             total.classList.add("total-price");
             total.innerText = json_response.totalPrice + " USD";
 
+            checkout.insertAdjacentHTML("beforeend",
+                "           <a href=\"/checkout\">\n" +
+                "                    <button id=\"checkout\">Checkout</button>\n" +
+                "                </a>\n");
 
             totalRow.appendChild(totalTitle);
             totalRow.appendChild(total);
+            totalRow.appendChild(checkout);
             cart.appendChild(totalRow);
         });
 }

@@ -202,6 +202,10 @@ table {
     border-collapse: unset;
 }
 
+.cart-inside {
+    margin-top: .3rem;
+}
+
 #cart thead th {
     color: sandybrown;
     border-bottom: darkorange 2px solid;
@@ -244,16 +248,21 @@ table {
 
 .total-row {
     position: absolute;
+    display: flex;
+    flex-direction: row;
     left: 1rem;
-    bottom: 3rem;
+    bottom: 0;
     width: 83%;
     border-top: darkorange 2px solid;
+    margin-bottom: .2rem;
+}
+
+.total-title {
+    margin-right: 60%;
 }
 
 .total-price {
-    position: absolute;
-    right: 1rem;
-    bottom: .3rem;
+
 }
 
 .content {
@@ -297,6 +306,23 @@ table {
 #main-title {
     color: black;
     text-decoration: none;
+}
+
+#checkout {
+    background-color: #17a2b8;
+    display: inline-block;
+    text-align: center;
+    font-size: .9rem;
+    vertical-align: middle;
+    border: 1px solid #17a2b8;
+    padding: .275rem .55rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s;
+}
+
+.checkout-button {
+    display: none;
 }
 
 .checkout p {
