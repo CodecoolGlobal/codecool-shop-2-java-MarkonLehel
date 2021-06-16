@@ -12,7 +12,7 @@ import java.util.List;
 public class ProductDaoJDBC extends DatabaseConnection implements ProductDao {
     private static ProductDaoJDBC instance;
     private ProductCategoryDaoJDBC productCategoryDaoJDBC = ProductCategoryDaoJDBC.getInstance();
-    private SupplierDaoDB supplierDaoDB = SupplierDaoDB.getInstance();
+    private SupplierDaoJDBC supplierDaoJDBC = SupplierDaoJDBC.getInstance();
 
     public static ProductDaoJDBC getInstance() {
         if (instance == null) {
@@ -42,7 +42,7 @@ public class ProductDaoJDBC extends DatabaseConnection implements ProductDao {
             float price = rs.getFloat(2);
             String currency = rs.getString(3);
             ProductCategory productCategory = productCategoryDaoJDBC.find(rs.getInt(4));
-            Supplier supplier = supplierDaoDB.find(rs.getInt(5));
+            Supplier supplier = supplierDaoJDBC.find(rs.getInt(5));
             Product product = new Product(name, price, currency,description, productCategory, supplier);
             return product;
         } catch (SQLException e) {
@@ -67,7 +67,7 @@ public class ProductDaoJDBC extends DatabaseConnection implements ProductDao {
                         rs.getString(3),
                         rs.getString(4),
                         productCategoryDaoJDBC.find(rs.getInt(5)),
-                        supplierDaoDB.find(rs.getInt(6)));
+                        supplierDaoJDBC.find(rs.getInt(6)));
                 result.add(product);
             }
         } catch (SQLException e) {

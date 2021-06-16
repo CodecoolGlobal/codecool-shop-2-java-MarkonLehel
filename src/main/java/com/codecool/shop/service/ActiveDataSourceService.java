@@ -40,11 +40,11 @@ public class ActiveDataSourceService {
             activeProductCategoryDao = ProductCategoryDaoMem.getInstance();
         } else {
             ProductDaoJDBC.getInstance().connect(database, user, password);
-            SupplierDaoDB.getInstance().connect(database, user, password);
+            SupplierDaoJDBC.getInstance().connect(database, user, password);
             ProductCategoryDaoJDBC.getInstance().connect(database, user, password);
 
             activeProductDao = ProductDaoJDBC.getInstance();
-            activeSupplierDao = SupplierDaoDB.getInstance();
+            activeSupplierDao = SupplierDaoJDBC.getInstance();
             activeProductCategoryDao = ProductCategoryDaoJDBC.getInstance();
         }
     }
