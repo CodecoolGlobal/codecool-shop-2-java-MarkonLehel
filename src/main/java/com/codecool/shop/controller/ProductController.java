@@ -6,6 +6,7 @@ import com.codecool.shop.dao.SupplierDao;
 import com.codecool.shop.dao.implementation.ProductCategoryDaoMem;
 import com.codecool.shop.dao.implementation.ProductDaoMem;
 import com.codecool.shop.dao.implementation.SupplierDaoMem;
+import com.codecool.shop.service.ActiveDataSourceService;
 import com.codecool.shop.service.ProductService;
 import com.codecool.shop.config.TemplateEngineUtil;
 import com.codecool.shop.service.SupplierService;
@@ -24,11 +25,12 @@ public class ProductController extends HttpServlet {
     Logger logger = Util.createLogger(ProductController.class);
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        ActiveDataSourceService activeDataSourceService = ActiveDataSourceService.getInstance();
 
         //Daos
-        ProductDao productDataStore = ProductDaoMem.getInstance();
-        SupplierDao supplierDataStore = SupplierDaoMem.getInstance();
-        ProductCategoryDao productCategoryDataStore = ProductCategoryDaoMem.getInstance();
+        ProductDao productDataStore = activeDataSourceService.getActiveProductDao();
+        SupplierDao supplierDataStore = activeDataSourceService.getActiveSupplierDao();
+        ProductCategoryDao productCategoryDataStore = activeDataSourceService.getActiveProductCategoryDao();
 
         //Services
         SupplierService supplierService = new SupplierService(supplierDataStore);

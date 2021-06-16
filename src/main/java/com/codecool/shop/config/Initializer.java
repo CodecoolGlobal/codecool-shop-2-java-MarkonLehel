@@ -9,16 +9,38 @@ import com.codecool.shop.dao.implementation.SupplierDaoMem;
 import com.codecool.shop.model.Product;
 import com.codecool.shop.model.ProductCategory;
 import com.codecool.shop.model.Supplier;
+import com.codecool.shop.service.ActiveDataSourceService;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
+import java.io.IOException;
+import java.sql.SQLException;
 
 @WebListener
 public class Initializer implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
+        ActiveDataSourceService activeDataSourceService = ActiveDataSourceService.getInstance();
+        try {
+            activeDataSourceService.getConfig();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        if (activeDataSourceService.getUseMemDao()) {
+            initializeMemDao();
+        }
+        try {
+            activeDataSourceService.init();
+        } catch (SQLException throwAbles) {
+            throwAbles.printStackTrace();
+        }
+    }
+
+    private void initializeMemDao() {
+        System.out.println("lefut");
         ProductDao productDataStore = ProductDaoMem.getInstance();
         ProductCategoryDao productCategoryDataStore = ProductCategoryDaoMem.getInstance();
         SupplierDao supplierDataStore = SupplierDaoMem.getInstance();
@@ -51,7 +73,5 @@ public class Initializer implements ServletContextListener {
         productDataStore.add(new Product("Prometheus Expedition Carrier", 47535, "USD", "A Goa'uld mothership, tetrahedral in shape. Ha'taks facilitate the transport of Goa'uld and their Jaffa armies. They are significant forces in attacking worlds from space, capable of atmospheric flight and landing on a planet's surface.", mothership, starlight));
         productDataStore.add(new Product("Ha'tak Mothership", 39500, "USD", "U.S.C.S.S. Prometheus Ship was a pioneering starship built to travel into deep space, tasked with the mission to discover the truth of mankind’s true origin.", mothership, goauld));
         productDataStore.add(new Product("Stinger Starfigther Gen I", 3500, "USD", "A small and nimble fighter, main armaments consist of 2 laser cannons.", fighter, CEC));
-
-
     }
 }
