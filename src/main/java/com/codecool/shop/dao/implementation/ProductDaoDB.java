@@ -11,7 +11,7 @@ import java.util.List;
 
 public class ProductDaoDB extends DatabaseConnection implements ProductDao {
     private static ProductDaoDB instance;
-    private ProductCategoryDaoDB productCategoryDaoDB = ProductCategoryDaoDB.getInstance();
+    private ProductCategoryDaoJDBC productCategoryDaoJDBC = ProductCategoryDaoJDBC.getInstance();
     private SupplierDaoDB supplierDaoDB = SupplierDaoDB.getInstance();
 
     public static ProductDaoDB getInstance() {
@@ -41,7 +41,7 @@ public class ProductDaoDB extends DatabaseConnection implements ProductDao {
             String description = rs.getString(1);
             float price = rs.getFloat(2);
             String currency = rs.getString(3);
-            ProductCategory productCategory = productCategoryDaoDB.find(rs.getInt(4));
+            ProductCategory productCategory = productCategoryDaoJDBC.find(rs.getInt(4));
             Supplier supplier = supplierDaoDB.find(rs.getInt(5));
             Product product = new Product(name, price, currency,description, productCategory, supplier);
             return product;
@@ -66,7 +66,7 @@ public class ProductDaoDB extends DatabaseConnection implements ProductDao {
                         rs.getFloat(2),
                         rs.getString(3),
                         rs.getString(4),
-                        productCategoryDaoDB.find(rs.getInt(5)),
+                        productCategoryDaoJDBC.find(rs.getInt(5)),
                         supplierDaoDB.find(rs.getInt(6)));
                 result.add(product);
             }
