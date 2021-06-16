@@ -162,7 +162,7 @@
 
 .cart-open {
     background-color: #3b3b3b;
-    min-height: 350px;
+    min-height: 400px;
     min-width: 500px;
     transition: 0.2s;
     transition-timing-function: cubic-bezier(0.6, -0.28, 0.74, 0.05);
@@ -200,6 +200,7 @@
 
 table {
     border-collapse: unset;
+    width: 500px;
 }
 
 .cart-inside {
@@ -221,7 +222,7 @@ table {
 
 #cart .cart-item-deletebtn {
     width: 1rem;
-    height: 1.6rem;
+    height: 1rem;
     padding: 0;
 }
 
@@ -258,11 +259,11 @@ table {
 }
 
 .total-title {
-    margin-right: 60%;
+    margin-right: 53%;
 }
 
 .total-price {
-
+    width: 100px;
 }
 
 .content {
