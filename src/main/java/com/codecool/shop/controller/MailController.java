@@ -9,57 +9,78 @@ import javax.mail.internet.*;
 import javax.activation.*;
 
 public class MailController {
-    private final Logger logger = Util.createLogger(PaymentController.class);
+    private static final Logger logger = Util.createLogger(PaymentController.class);
     static Cart shoppingCart = Cart.getInstance();
 
-    private static Properties prop = new Properties();
     private static MailController instance;
 
 
-
-    public static MailController getInstance(){
+    public static MailController getInstance() {
         if (instance == null)
             instance = new MailController();
         return instance;
     }
 
-    private MailController(){
-
+    private MailController() {
     }
 
-    private void init() {
-        prop.put("mail.smtp.auth", true);
-        prop.put("mail.smtp.starttls.enable", "true");
-        prop.put("mail.smtp.host", "smtp.mailtrap.io");
-        prop.put("mail.smtp.port", "25");
-        prop.put("mail.smtp.ssl.trust", "smtp.mailtrap.io");
-    }
-
-    static Session session = Session.getInstance(prop, new Authenticator() {
-        @Override
-        protected PasswordAuthentication getPasswordAuthentication() {
-            return new PasswordAuthentication("Space ShipShop", ".spaceShipShop01.");
-        }
-    });
 
     public static void sendMail(String address) throws MessagingException {
-        Message message = new MimeMessage(session);
-        message.setFrom(new InternetAddress("spaceshipshop@freemail.com"));
-        message.setRecipients(
-                Message.RecipientType.TO, InternetAddress.parse(address));
-        message.setSubject("Space ShipShop order confirmation");
 
-        String msg = "Thank you for purchasing from Space ShipShop!" +
-                "Your order number is " + shoppingCart.getOrderID();
+        // Recipient's email ID needs to be mentioned.
 
-        MimeBodyPart mimeBodyPart = new MimeBodyPart();
-        mimeBodyPart.setContent(msg, "text/html");
+        // Sender's email ID needs to be mentioned
+        String from = "spaceshipshop01@gmail.com";
 
-        Multipart multipart = new MimeMultipart();
-        multipart.addBodyPart(mimeBodyPart);
+        // Assuming you are sending email from through gmails smtp
+        String host = "smtp.gmail.com";
 
-        message.setContent(multipart);
+        // Get system properties
+        Properties properties = System.getProperties();
 
-        Transport.send(message);
+        // Setup mail server
+        properties.put("mail.smtp.host", host);
+        properties.put("mail.smtp.port", "465");
+        properties.put("mail.smtp.ssl.enable", "true");
+        properties.put("mail.smtp.auth", "true");
+
+        // Get the Session object.// and pass username and password
+        Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
+
+            protected PasswordAuthentication getPasswordAuthentication() {
+
+                return new PasswordAuthentication("spaceshipshop01@gmail.com", ".spaceShipShop01.");
+
+            }
+
+        });
+
+        // Used to debug SMTP issues
+        session.setDebug(false);
+
+        try {
+            // Create a default MimeMessage object.
+            MimeMessage message = new MimeMessage(session);
+
+            // Set From: header field of the header.
+            message.setFrom(new InternetAddress(from));
+
+            // Set To: header field of the header.
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(address));
+
+            // Set Subject: header field
+            message.setSubject("Space ShipShop order confirmation");
+
+            // Now set the actual message
+            message.setText("Dear customer, \n Your order has been processed and will ship in the next 3 business days.\n" +
+                    "Your order ID is " + shoppingCart.getOrderID());
+            // Send message
+            Transport.send(message);
+            logger.info("Email has been sent successfully to " + address);
+        } catch (MessagingException mex) {
+            mex.printStackTrace();
+        }
+
     }
+
 }
