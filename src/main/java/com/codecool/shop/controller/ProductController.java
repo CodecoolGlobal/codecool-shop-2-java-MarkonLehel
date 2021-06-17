@@ -1,14 +1,11 @@
 package com.codecool.shop.controller;
 
+import com.codecool.shop.config.TemplateEngineUtil;
 import com.codecool.shop.dao.ProductCategoryDao;
 import com.codecool.shop.dao.ProductDao;
 import com.codecool.shop.dao.SupplierDao;
-import com.codecool.shop.dao.implementation.ProductCategoryDaoMem;
-import com.codecool.shop.dao.implementation.ProductDaoMem;
-import com.codecool.shop.dao.implementation.SupplierDaoMem;
 import com.codecool.shop.service.ActiveDataSourceService;
 import com.codecool.shop.service.ProductService;
-import com.codecool.shop.config.TemplateEngineUtil;
 import com.codecool.shop.service.SupplierService;
 import org.slf4j.Logger;
 import org.thymeleaf.TemplateEngine;
