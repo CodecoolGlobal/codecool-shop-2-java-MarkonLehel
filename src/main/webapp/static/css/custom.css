@@ -1,3 +1,13 @@
+body {
+    background-image: url("../img/background.jpg");
+    background-attachment: fixed;
+    overflow: scroll;
+}
+
+body::-webkit-scrollbar {
+    display: none; /* for Chrome, Safari, and Opera */
+}
+
 .glyphicon {
     margin-right: 5px;
 }
@@ -383,6 +393,10 @@ table {
     transform: translateX(-50%);
     margin: 0 4rem 4rem 0;
     width: 8rem;
+}
+
+#footer {
+    margin: 1rem;
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
