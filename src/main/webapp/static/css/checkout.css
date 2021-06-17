@@ -1,0 +1,236 @@
+body {
+    background-image: url("../img/background.jpg");
+    background-attachment: fixed;
+    overflow: scroll;
+}
+
+body::-webkit-scrollbar {
+    display: none; /* for Chrome, Safari, and Opera */
+}
+
+.glyphicon {
+    margin-right: 5px;
+}
+
+/*Colors:
+#518abc
+
+*/
+.thumbnail {
+    margin-bottom: 20px;
+    padding: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+}
+
+.thumbnail img {
+    margin-top: 10px;
+}
+
+.item.list-group-item {
+    float: none;
+    width: 100%;
+    background-color: #fff;
+    margin-bottom: 10px;
+}
+
+.item.list-group-item:nth-of-type(odd):hover, .item.list-group-item:hover {
+    background: #428bca;
+}
+
+.item.list-group-item .list-group-image {
+    margin-right: 10px;
+}
+
+.item.list-group-item .thumbnail {
+    margin-bottom: 0px;
+}
+
+.item.list-group-item .caption {
+    padding: 9px 9px 0px 9px;
+}
+
+.item.list-group-item:nth-of-type(odd) {
+    background: #eeeeee;
+}
+
+.item.list-group-item:before, .item.list-group-item:after {
+    display: table;
+    content: " ";
+}
+
+.item.list-group-item img {
+    float: left;
+}
+
+.item.list-group-item:after {
+    clear: both;
+}
+
+.list-group-item-text {
+    margin: 0 0 11px;
+}
+
+.jumbotron {
+    top: 0;
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+    display: flex;
+    flex-direction: row;
+    padding: 1rem .5rem;
+}
+
+#main-title {
+    margin: auto;
+    color: black;
+    text-decoration: none;
+}
+
+.jumbotron h1 {
+    margin: auto;
+    color: sandybrown;
+}
+
+.jumbotron h1:hover {
+    color: darkorange;
+}
+
+.container {
+    margin-top: 7rem;
+    z-index: 3;
+}
+
+.total-title {
+    margin-right: 53%;
+}
+
+.total-price {
+    width: 100px;
+}
+
+#main .card {
+    margin: 1rem;
+    border-radius: 10px;
+}
+
+#main .card .card-header p {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+#main .card img {
+    border-radius: 10px;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+}
+
+.content input {
+    /*width: 33.3333333%;
+    margin-left: 33.3333333%;*/
+}
+
+#phone-number {
+    margin-bottom: 2.5rem;
+}
+
+#main-title {
+    color: black;
+    text-decoration: none;
+}
+
+.checkout {
+    z-index: 5;
+    left: 0;
+    top: 13rem;
+    width: 100%;
+    margin-bottom: 2.5rem;
+}
+
+.checkout input {
+    margin-bottom: 1rem;
+    border: solid 2px darkorange;
+}
+
+.checkout p {
+    margin-top: 1rem;
+    line-height: .6rem;
+    color: sandybrown;
+}
+
+.personal-data {
+    margin: auto;
+}
+
+
+#billing {
+    margin: 0 auto;
+}
+
+.checkout #checkbox {
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+}
+
+.checkout #checkbox input {
+    margin: auto;
+    margin-left: 37%;
+    margin-bottom: 2rem;
+}
+
+.checkout #checkbox p {
+    margin: auto;
+    margin-right: 40%;
+    margin-bottom: 2rem;
+    margin-left: 2rem;
+    white-space: nowrap;
+}
+
+#billing input {
+    margin-left: 0;
+}
+
+#billing-address {
+    margin-bottom: .7rem;
+}
+
+#shipping-address {
+    margin-bottom: .7rem;
+}
+
+#back-button {
+    margin-left: 4rem;
+}
+
+.payment {
+    width: 100%;
+    margin-bottom: 4rem;
+}
+
+.payment #pay {
+    position: absolute;
+    left: 50%;
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    margin: 0 4rem 4rem 0;
+    width: 8rem;
+}
+
+#footer {
+    margin: 1rem;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-width: 1000px) {
+    .content {
+        flex-direction: column;
+    }
+}

@@ -16,7 +16,7 @@ body {
     min-height: 100vh;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
-    font-family: 'Raleway';
+    line-height: normal;
 }
 
 .payment-title {
@@ -68,17 +68,17 @@ label {
 input {
     margin-top: 3px;
     padding: 15px;
-    font-size: 16px;
+    font-size: 15px;
     width: 100%;
     border-radius: 3px;
     border: 1px solid #dcdcdc;
 }
 
 .ccicon {
-    height: 38px;
+    height: 30px;
     position: absolute;
-    right: 6px;
-    top: calc(50% - 17px);
+    right: -9px;
+    top: calc(50% - 22px);
     width: 60px;
 }
 
@@ -90,12 +90,69 @@ input {
     -o-transition: none !important;
 }
 
-.container {
+.containerr {
     width: 100%;
-    max-width: 400px;
-    max-height: 251px;
-    height: 54vw;
     padding: 20px;
+    margin: auto;
+}
+
+.cart-container {
+    margin: auto;
+    margin-top: 4.2rem;
+}
+
+.cart-container table th{
+    border-bottom: 1px solid darkgoldenrod;
+    white-space: nowrap;
+    margin: auto;
+    color: sandybrown;
+}
+
+.cart-container table td{
+    white-space: nowrap;
+    margin: auto;
+    color: sandybrown;
+}
+
+.cart-container p {
+    border-top: 1px solid darkgoldenrod;
+    margin: auto;
+    color: sandybrown;
+}
+
+#content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px;
+    margin: auto;
+}
+
+.creditcard {
+    margin: auto;
+}
+
+.payment-title {
+    border-bottom: 2px solid darkorange;
+    color: sandybrown;
+    margin: auto;
+    margin-top: 7rem;
+}
+
+.form-container {
+    margin: auto;
+}
+
+.field-container input{
+    margin: auto;
+    line-height: 1rem;
+    padding: .4rem;
+    width: 100%;
+}
+
+.field-container label{
+    margin: auto;
+    color: sandybrown;
 }
 
 #ccsingle {
@@ -320,6 +377,9 @@ input {
 /* FLIP ANIMATION */
 .container {
     perspective: 1000px;
+    margin: auto;
+    margin-top: 1.2rem;
+    padding: 3rem;
 }
 
 .creditcard {
@@ -332,6 +392,8 @@ input {
     transition: transform 0.6s;
     transition: transform 0.6s, -webkit-transform 0.6s;
     cursor: pointer;
+    margin: auto;
+    margin-bottom: 18rem;
 }
 
 .creditcard .front,
@@ -353,4 +415,120 @@ input {
 .creditcard.flipped {
     -webkit-transform: rotateY(180deg);
     transform: rotateY(180deg);
+}
+
+body {
+    background-image: url("../img/background.jpg");
+    background-attachment: fixed;
+    overflow: scroll;
+}
+
+/* What */
+
+body::-webkit-scrollbar {
+    display: none; /* for Chrome, Safari, and Opera */
+}
+
+.glyphicon {
+    margin-right: 5px;
+}
+
+.thumbnail {
+    margin-bottom: 20px;
+    padding: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+}
+
+.thumbnail img {
+    margin-top: 10px;
+}
+
+.item.list-group-item {
+    float: none;
+    width: 100%;
+    background-color: #fff;
+    margin-bottom: 10px;
+}
+
+.item.list-group-item:nth-of-type(odd):hover, .item.list-group-item:hover {
+    background: #428bca;
+}
+
+.item.list-group-item .list-group-image {
+    margin-right: 10px;
+}
+
+.item.list-group-item .thumbnail {
+    margin-bottom: 0px;
+}
+
+.item.list-group-item .caption {
+    padding: 9px 9px 0px 9px;
+}
+
+.item.list-group-item:nth-of-type(odd) {
+    background: #eeeeee;
+}
+
+.item.list-group-item:before, .item.list-group-item:after {
+    display: table;
+    content: " ";
+}
+
+.item.list-group-item img {
+    float: left;
+}
+
+.item.list-group-item:after {
+    clear: both;
+}
+
+.list-group-item-text {
+    margin: 0 0 11px;
+}
+
+.jumbotron {
+    top: 0;
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+    display: flex;
+    flex-direction: row;
+    padding: 1rem .5rem;
+}
+
+#main-title {
+    margin: auto;
+    color: black;
+    text-decoration: none;
+}
+
+#main {
+    width: 100%;
+}
+
+.jumbotron h1 {
+    margin: auto;
+    color: sandybrown;
+}
+
+.jumbotron h1:hover {
+    color: darkorange;
+}
+
+
+#footer {
+    margin: 1rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 98%;
+}
+
+@media screen and (min-width: 1000px) {
+    #content {
+        flex-direction: row-reverse;
+    }
 }
