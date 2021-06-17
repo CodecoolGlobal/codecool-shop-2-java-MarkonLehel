@@ -1,10 +1,13 @@
 package com.codecool.shop.controller;
 
 import com.codecool.shop.dao.ProductCategoryDao;
+import com.codecool.shop.dao.ProductDao;
+import com.codecool.shop.dao.SupplierDao;
 import com.codecool.shop.dao.implementation.ProductCategoryDaoMem;
 import com.codecool.shop.dao.implementation.ProductDaoMem;
 import com.codecool.shop.model.Cart;
 import com.codecool.shop.model.CartItem;
+import com.codecool.shop.service.ActiveDataSourceService;
 import com.codecool.shop.service.CartService;
 import com.codecool.shop.service.ProductService;
 import com.google.gson.JsonArray;
@@ -20,9 +23,11 @@ import java.io.*;
 
 @WebServlet(urlPatterns = {"/cart"})
 public class CartController extends HttpServlet {
+    ActiveDataSourceService activeDataSourceService = ActiveDataSourceService.getInstance();
+
     private final Logger logger = Util.createLogger(PaymentController.class);
-    private final ProductDaoMem pdm = ProductDaoMem.getInstance();
-    private final ProductCategoryDao pcd = ProductCategoryDaoMem.getInstance();
+    private final ProductDao pdm = activeDataSourceService.getActiveProductDao();
+    private final ProductCategoryDao pcd = activeDataSourceService.getActiveProductCategoryDao();
 
     private final CartService cartService = new CartService(Cart.getInstance());
     private final ProductService productService = new ProductService(pdm, pcd);
