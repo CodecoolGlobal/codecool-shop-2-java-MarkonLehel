@@ -37,12 +37,12 @@ public class ProductDaoDB extends DatabaseConnection implements ProductDao {
             if (!rs.next()) {
                 return null;
             }
-            String name = rs.getString(0);
-            String description = rs.getString(1);
-            float price = rs.getFloat(2);
-            String currency = rs.getString(3);
-            ProductCategory productCategory = productCategoryDaoDB.find(rs.getInt(4));
-            Supplier supplier = supplierDaoDB.find(rs.getInt(5));
+            String name = rs.getString(1);
+            String description = rs.getString(2);
+            float price = rs.getFloat(3);
+            String currency = rs.getString(4);
+            ProductCategory productCategory = productCategoryDaoDB.find(rs.getInt(5));
+            Supplier supplier = supplierDaoDB.find(rs.getInt(6));
             Product product = new Product(name, price, currency,description, productCategory, supplier);
             return product;
         } catch (SQLException e) {
