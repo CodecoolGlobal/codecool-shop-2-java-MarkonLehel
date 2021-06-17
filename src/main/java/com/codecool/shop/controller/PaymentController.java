@@ -43,11 +43,11 @@ public class PaymentController extends HttpServlet {
         cartService.clearCart();
         resp.sendRedirect("/success");
 //Mail
-//        try {
-//            MailController.getInstance().sendMail("lehel.markon@gmail.com");
-//        } catch (MessagingException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            MailController.getInstance().sendMail("lehel.markon@gmail.com");
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
     }
 
 
