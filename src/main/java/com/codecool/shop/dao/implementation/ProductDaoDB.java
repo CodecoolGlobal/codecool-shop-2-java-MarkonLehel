@@ -83,9 +83,9 @@ public class ProductDaoDB extends DatabaseConnection implements ProductDao {
         try (Connection conn = dataSource.getConnection()) {
             String sql = """
                             SELECT name, price, currency, description,
-                            product_category, supplier
+                            product_category, supplier, id
                             FROM product
-                            WHERE supplier =? ORDER BY id""";
+                            WHERE supplier = ? ORDER BY id""";
             PreparedStatement st = conn.prepareStatement(sql);
             st.setInt(1, supplier.getId());
             ResultSet rs = st.executeQuery();
@@ -96,6 +96,7 @@ public class ProductDaoDB extends DatabaseConnection implements ProductDao {
                         rs.getString(4),
                         productCategoryDaoDB.find(rs.getInt(5)),
                         supplierDaoDB.find(rs.getInt(6)));
+                product.setId(rs.getInt(7));
                 result.add(product);
             }
         } catch (SQLException e) {
@@ -106,6 +107,29 @@ public class ProductDaoDB extends DatabaseConnection implements ProductDao {
 
     @Override
     public List<Product> getBy(ProductCategory productCategory) {
-        return null;
+        List<Product> result = new ArrayList<>();
+        try (Connection conn = dataSource.getConnection()) {
+            String sql = """
+                            SELECT name, price, currency, description,
+                            product_category, supplier, id
+                            FROM product
+                            WHERE supplier = ? ORDER BY id""";
+            PreparedStatement st = conn.prepareStatement(sql);
+            st.setInt(1, productCategory.getId());
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Product product = new Product(rs.getString(1),
+                        rs.getFloat(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        productCategoryDaoDB.find(rs.getInt(5)),
+                        supplierDaoDB.find(rs.getInt(6)));
+                product.setId(rs.getInt(7));
+                result.add(product);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Error while reading all products: " + e);
+        }
+        return result;
     }
 }
