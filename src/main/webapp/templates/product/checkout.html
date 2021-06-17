@@ -8,7 +8,6 @@
     <title>Codecool Shop</title>
 
     <script src="/static/JS/checkout.js" defer></script>
-    <script src="/static/JS/navbar.js" defer></script>
     <!-- Bootstrap components -->
     <!-- Latest compiled and minified Jquery -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -29,7 +28,7 @@
           integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <!-- End of Bootstrap components -->
 
-    <link rel="stylesheet" type="text/css" href="/static/css/custom.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/checkout.css"/>
 
 </head>
 
@@ -46,25 +45,29 @@
             <button class='btn btn-info'>Back</button>
         </a>
         <div class='content'>
-            <p>First name</p>
-            <input id='first-name'>
-            <p>Last name</p>
-            <input id='last-name'>
-            <p>Email</p>
-            <input type='email' id='email'>
-            <p>Phone number</p>
-            <input type='tel' id='phone-number'>
-            <p id='shipping-address'>Shipping Address</p>
-            <p>Country</p>
-            <input id='country'>
-            <p>City</p>
-            <input id='city'>
-            <p>ZIP Code</p>
-            <input id='zip-code'>
-            <p>Street</p>
-            <input id='street'>
-            <div id='checkbox'><input type='checkbox' id='checkbox-input'>
-                <p>Same billing address as shipping address</p></div>
+            <div class="personal-data"> <p>First name</p>
+                <input id='first-name'>
+                <p>Last name</p>
+                <input id='last-name'>
+                <p>Email</p>
+                <input type='email' id='email'>
+                <p>Phone number</p>
+                <input type='tel' id='phone-number'>
+            </div>
+            <div class="shipping-address">
+                <p id='shipping-address'>Shipping Address</p>
+                <p>Country</p>
+                <input id='country'>
+                <p>City</p>
+                <input id='city'>
+                <p>ZIP Code</p>
+                <input id='zip-code'>
+                <p>Street</p>
+                <input id='street'>
+                <div id='checkbox'><input type='checkbox' id='checkbox-input'>
+                    <p>Same billing address as shipping address</p>
+                </div>
+            </div>
             <div id='billing'>
                 <p id='billing-address'>Billing Address</p>
                 <p>Country</p>
