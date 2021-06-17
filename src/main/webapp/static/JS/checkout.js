@@ -108,9 +108,12 @@ function getBillingAddress(country, city, zipCode, street) {
 function toggleAddressDiv() {
     let checkbox = document.getElementById("checkbox-input");
     let billingAddressDiv = document.getElementById("billing");
+    let shippingAddressDiv = document.getElementsByClassName("shipping-address")[0];
     if (checkbox.checked) {
         billingAddressDiv.style.display = "none";
+        shippingAddressDiv.style.margin = "0 auto auto auto";
     } else {
         billingAddressDiv.style.display = "block";
+        shippingAddressDiv.style.margin = "0";
     }
 }
