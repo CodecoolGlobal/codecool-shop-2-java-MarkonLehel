@@ -156,6 +156,15 @@ body::-webkit-scrollbar {
     text-decoration: none;
 }
 
+.sub-title {
+    color: sandybrown;
+}
+
+.sub-title:hover {
+    color: darkorange;
+    cursor: grab;
+}
+
 .jumbotron h1 {
     margin: auto;
     color: sandybrown;
