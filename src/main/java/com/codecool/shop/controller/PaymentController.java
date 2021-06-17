@@ -29,6 +29,7 @@ public class PaymentController extends HttpServlet {
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
 
         context.setVariable("cart", cartService.getShoppingCart());
+        System.out.println(cartService.getShoppingCart().getCartItems());
         logger.info("Payment page.\n Order id: {}", cartService.getCartOrderID());
         engine.process("product/payment.html", context, resp.getWriter());
     }

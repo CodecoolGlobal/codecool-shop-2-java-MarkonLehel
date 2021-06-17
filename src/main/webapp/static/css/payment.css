@@ -16,7 +16,7 @@ body {
     min-height: 100vh;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
-    font-family: 'Raleway';
+    line-height: normal;
 }
 
 .payment-title {
@@ -68,17 +68,17 @@ label {
 input {
     margin-top: 3px;
     padding: 15px;
-    font-size: 16px;
+    font-size: 15px;
     width: 100%;
     border-radius: 3px;
     border: 1px solid #dcdcdc;
 }
 
 .ccicon {
-    height: 38px;
+    height: 30px;
     position: absolute;
-    right: 6px;
-    top: calc(50% - 17px);
+    right: -9px;
+    top: calc(50% - 22px);
     width: 60px;
 }
 
@@ -90,12 +90,69 @@ input {
     -o-transition: none !important;
 }
 
-.container {
+.containerr {
     width: 100%;
-    max-width: 400px;
-    max-height: 251px;
-    height: 54vw;
     padding: 20px;
+    margin: auto;
+}
+
+.cart-container {
+    margin: auto;
+    margin-top: 4.2rem;
+}
+
+.cart-container table th{
+    border-bottom: 1px solid darkgoldenrod;
+    white-space: nowrap;
+    margin: auto;
+    color: sandybrown;
+}
+
+.cart-container table td{
+    white-space: nowrap;
+    margin: auto;
+    color: sandybrown;
+}
+
+.cart-container p {
+    border-top: 1px solid darkgoldenrod;
+    margin: auto;
+    color: sandybrown;
+}
+
+#content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px;
+    margin: auto;
+}
+
+.creditcard {
+    margin: auto;
+}
+
+.payment-title {
+    border-bottom: 2px solid darkorange;
+    color: sandybrown;
+    margin: auto;
+    margin-top: 7rem;
+}
+
+.form-container {
+    margin: auto;
+}
+
+.field-container input{
+    margin: auto;
+    line-height: 1rem;
+    padding: .4rem;
+    width: 100%;
+}
+
+.field-container label{
+    margin: auto;
+    color: sandybrown;
 }
 
 #ccsingle {
@@ -320,6 +377,9 @@ input {
 /* FLIP ANIMATION */
 .container {
     perspective: 1000px;
+    margin: auto;
+    margin-top: 1.2rem;
+    padding: 3rem;
 }
 
 .creditcard {
@@ -332,6 +392,8 @@ input {
     transition: transform 0.6s;
     transition: transform 0.6s, -webkit-transform 0.6s;
     cursor: pointer;
+    margin: auto;
+    margin-bottom: 18rem;
 }
 
 .creditcard .front,
@@ -427,87 +489,6 @@ body::-webkit-scrollbar {
     margin: 0 0 11px;
 }
 
-/* Sidenav */
-
-/* The side navigation menu */
-.sidenav {
-    height: 100%; /* 100% Full-height */
-    width: 0; /* 0 width - change this with JavaScript */
-    position: fixed; /* Stay in place */
-    z-index: 9999; /* Stay on top */
-    top: 0; /* Stay at the top */
-    left: 0;
-    background-color: #2f5476;
-    overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 60px; /* Place content 60px from the top */
-    transition: 0.6s; /* 0.5 second transition effect to slide in the sidenav */
-    transition-timing-function: cubic-bezier(0.18, 0.89, 0.32, 1.28);
-}
-
-.sidenav .card-body {
-    padding-left: 3rem;
-}
-
-.sidenav p {
-    margin: 0;
-}
-
-#sideNavMenu .card p a {
-    overflow-wrap: break-word;
-    border: sandybrown solid 1px;
-    margin: .3rem;
-    border-radius: 10px;
-    text-align: center;
-    padding: 8px 0 8px 0;
-}
-
-#sidenavTrigger {
-    height: 100%; /* 100% Full-height */
-    min-width: 40px; /* 0 width - change this with JavaScript */
-    position: fixed; /* Stay in place */
-    left: 0;
-    /* When you mouse over the navigation links, change their color */
-}
-
-#checkout {
-    background-color: #17a2b8;
-    display: inline-block;
-    text-align: center;
-    font-size: .9rem;
-    vertical-align: middle;
-    border: 1px solid #17a2b8;
-    padding: .275rem .55rem;
-    line-height: 1.5;
-    border-radius: .25rem;
-    transition: color .15s;
-}
-
-
-/* The navigation menu links */
-.sidenav a {
-    white-space: nowrap;
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 1rem;
-    color: sandybrown;
-    display: block;
-    transition: 0.3s;
-}
-
-.sidenav a:hover {
-    color: darkorange;
-}
-
-/* Position and style the close button (top right corner) */
-
-.sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-}
-
 .jumbotron {
     top: 0;
     position: fixed;
@@ -515,7 +496,7 @@ body::-webkit-scrollbar {
     z-index: 999;
     display: flex;
     flex-direction: row;
-    padding: 3rem 1.5rem;
+    padding: 1rem .5rem;
 }
 
 #main-title {
@@ -524,13 +505,8 @@ body::-webkit-scrollbar {
     text-decoration: none;
 }
 
-.sub-title {
-    color: sandybrown;
-}
-
-.sub-title:hover {
-    color: darkorange;
-    cursor: grab;
+#main {
+    width: 100%;
 }
 
 .jumbotron h1 {
@@ -542,185 +518,17 @@ body::-webkit-scrollbar {
     color: darkorange;
 }
 
-.container {
-    margin-top: 15rem;
-    z-index: 3;
-}
-
-.cart-open {
-    background-color: #3b3b3b;
-    min-height: 400px;
-    min-width: 500px;
-    transition: 0.2s;
-    transition-timing-function: cubic-bezier(0.6, -0.28, 0.74, 0.05);
-}
-
-.cart-holder button {
-    margin: .3rem;
-    position: relative;
-    color: sandybrown;
-    float: right;
-}
-
-.cart-holder button:hover {
-    color: darkorange;
-}
-
-.cart-holder {
-    z-index: 1999;
-    right: .4rem;
-    overflow-x: hidden; /* Disable horizontal scroll */
-    position: fixed; /* Stay in place */
-    margin-right: .3rem;
-
-}
-
-#cart {
-    display: none;
-    background-color: #2f5476;
-    opacity: 90%;
-    border-radius: 10px;
-    padding: .7rem;
-    border: #3b3b3b 2px solid;
-    border-spacing: 0 .3rem;
-}
-
-table {
-    border-collapse: unset;
-    width: 500px;
-}
-
-.cart-inside {
-    margin-top: .3rem;
-}
-
-#cart thead th {
-    color: sandybrown;
-    border-bottom: darkorange 2px solid;
-    text-align: center;
-    width: 100%;
-    margin: auto;
-}
-
-#cart tbody {
-    display: inline-block;
-    width: 100%;
-}
-
-#cart .cart-item-deletebtn {
-    width: 1rem;
-    height: 1rem;
-    padding: 0;
-}
-
-#cart table .to-width{
-    width: 100%;
-}
-
-#cart table th, td {
-    color: sandybrown;
-}
-
-.cart-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.cart-inside {
-    flex-shrink: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    transition: 0.3s;
-}
-
-.total-row {
-    position: absolute;
-    display: flex;
-    flex-direction: row;
-    left: 1rem;
-    bottom: 0;
-    width: 83%;
-    border-top: darkorange 2px solid;
-    margin-bottom: .2rem;
-}
-
-.total-title {
-    margin-right: 53%;
-}
-
-.total-price {
-    width: 100px;
-}
-
-#main .card {
-    margin: 1rem;
-    border-radius: 10px;
-}
-
-#main .card .card-header p {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-
-#main .card img {
-    border-radius: 10px;
-}
-
-.content {
-    display: flex;
-    flex-direction: row;
-    text-align: center;
-}
-
-.content div {
-    margin-bottom: 1rem;
-}
-
-.content input {
-    /*width: 33.3333333%;
-    margin-left: 33.3333333%;*/
-}
-
-#phone-number {
-    margin-bottom: 2.5rem;
-}
-
-.navBarDropButton a {
-    padding: 8px 8px 32px 8px;
-}
-
-
-#main-title {
-    color: black;
-    text-decoration: none;
-}
-
-.checkout-button {
-    display: none;
-}
-
-.checkout {
-    z-index: 5;
-    left: 0;
-    top: 13rem;
-    width: 100%;
-    margin-bottom: 2.5rem;
-}
 
 #footer {
     margin: 1rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 98%;
 }
 
-/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-@media screen and (max-height: 450px) {
-    .sidenav {
-        padding-top: 15px;
-    }
-
-    .sidenav a {
-        font-size: 18px;
+@media screen and (min-width: 1000px) {
+    #content {
+        flex-direction: row-reverse;
     }
 }

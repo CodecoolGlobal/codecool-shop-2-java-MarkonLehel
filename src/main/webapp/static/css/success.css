@@ -1,5 +1,6 @@
 body {
-    background-image: url("../img/background.jpg");
+    background-image: url("../img/success.jpg");
+    background-size: 100%;
     background-attachment: fixed;
     overflow: scroll;
 }
@@ -17,9 +18,19 @@ body::-webkit-scrollbar {
 
 */
 
+.success {
+    font-size: 2rem;
+    text-align: center;
+    margin: auto;
+    background-color: rgba(15, 15, 15, 0.7);
+    width: 60%;
+    border-radius: 10px;
+}
+
 #main p {
     color: sandybrown;
     margin: auto;
+
 }
 
 .thumbnail {

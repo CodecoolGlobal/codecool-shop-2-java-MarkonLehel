@@ -35,8 +35,11 @@
     <a href="/" id="main-title"><h1>Space ShipShop</h1></a>
 </div>
 <div id="main" class="container">
-    <p>We have your money now! Haha!</p>
-    <p th:text="${orderId}"></p>
+    <div class="success">
+        <p>We have your money now! Haha!</p>
+        <p th:text="${orderId}"></p>
+    </div>
+
 
     <div th:replace="footer.html :: copy"></div>
 </div>
