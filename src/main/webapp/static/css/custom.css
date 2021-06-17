@@ -12,10 +12,6 @@ body::-webkit-scrollbar {
     margin-right: 5px;
 }
 
-/*Colors:
-#518abc
-
-*/
 .thumbnail {
     margin-bottom: 20px;
     padding: 0px;
@@ -112,6 +108,19 @@ body::-webkit-scrollbar {
     position: fixed; /* Stay in place */
     left: 0;
     /* When you mouse over the navigation links, change their color */
+}
+
+#checkout {
+    background-color: #17a2b8;
+    display: inline-block;
+    text-align: center;
+    font-size: .9rem;
+    vertical-align: middle;
+    border: 1px solid #17a2b8;
+    padding: .275rem .55rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s;
 }
 
 
@@ -330,27 +339,8 @@ table {
     text-decoration: none;
 }
 
-#checkout {
-    background-color: #17a2b8;
-    display: inline-block;
-    text-align: center;
-    font-size: .9rem;
-    vertical-align: middle;
-    border: 1px solid #17a2b8;
-    padding: .275rem .55rem;
-    line-height: 1.5;
-    border-radius: .25rem;
-    transition: color .15s;
-}
-
 .checkout-button {
     display: none;
-}
-
-.checkout p {
-    margin-top: 1rem;
-    line-height: .6rem;
-    color: sandybrown;
 }
 
 .checkout {
@@ -359,63 +349,6 @@ table {
     top: 13rem;
     width: 100%;
     margin-bottom: 2.5rem;
-}
-
-.checkout input {
-    margin-bottom: 1rem;
-    border: solid 2px darkorange;
-}
-
-.personal-data {
-    margin: auto;
-}
-
-.shipping-address {
-    margin: auto;
-}
-
-#billing {
-    margin: auto;
-}
-
-.checkout #checkbox {
-    display: flex;
-    flex-direction: row;
-}
-
-.checkout #checkbox input {
-    /*margin: auto 2rem auto 33.3333%;*/
-    width: 1rem;
-}
-
-#billing input {
-    margin-left: 0;
-}
-
-#billing-address {
-    margin-bottom: 1.5rem;
-}
-
-#shipping-address {
-    margin-bottom: .7rem;
-}
-
-#back-button {
-    margin-left: 4rem;
-}
-
-.payment {
-    width: 100%;
-    margin-bottom: 4rem;
-}
-
-.payment #pay {
-    position: absolute;
-    left: 50%;
-    -ms-transform: translateX(-50%);
-    transform: translateX(-50%);
-    margin: 0 4rem 4rem 0;
-    width: 8rem;
 }
 
 #footer {
