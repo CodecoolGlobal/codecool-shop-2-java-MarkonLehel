@@ -59,8 +59,36 @@ public class ProductDaoDB extends DatabaseConnection implements ProductDao {
     public List<Product> getAll() {
         List<Product> result = new ArrayList<>();
         try (Connection conn = dataSource.getConnection()) {
-            String sql = "SELECT name, price, currency, description, product_category, supplier FROM product ORDER BY id";
+            String sql = "SELECT name, price, currency, description, product_category, supplier, id FROM product ORDER BY id";
             ResultSet rs = conn.createStatement().executeQuery(sql);
+            while (rs.next()) {
+                Product product = new Product(rs.getString(1),
+                        rs.getFloat(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        productCategoryDaoDB.find(rs.getInt(5)),
+                        supplierDaoDB.find(rs.getInt(6)));
+                product.setId(rs.getInt(7));
+                result.add(product);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Error while reading all products: " + e);
+        }
+        return result;
+    }
+
+    @Override
+    public List<Product> getBy(Supplier supplier) {
+        List<Product> result = new ArrayList<>();
+        try (Connection conn = dataSource.getConnection()) {
+            String sql = """
+                            SELECT name, price, currency, description,
+                            product_category, supplier
+                            FROM product
+                            WHERE supplier =? ORDER BY id""";
+            PreparedStatement st = conn.prepareStatement(sql);
+            st.setInt(1, supplier.getId());
+            ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 Product product = new Product(rs.getString(1),
                         rs.getFloat(2),
@@ -74,11 +102,6 @@ public class ProductDaoDB extends DatabaseConnection implements ProductDao {
             throw new RuntimeException("Error while reading all products: " + e);
         }
         return result;
-    }
-
-    @Override
-    public List<Product> getBy(Supplier supplier) {
-        return null;
     }
 
     @Override
