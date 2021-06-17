@@ -11,12 +11,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SupplierDaoDB extends DatabaseConnection implements SupplierDao {
-    private static SupplierDaoDB instance;
+public class SupplierDaoJDBC extends DatabaseConnection implements SupplierDao {
+    private static SupplierDaoJDBC instance;
 
-    public static SupplierDaoDB getInstance() {
+    public static SupplierDaoJDBC getInstance() {
         if (instance == null) {
-            instance = new SupplierDaoDB();
+            instance = new SupplierDaoJDBC();
         }
         return instance;
     }

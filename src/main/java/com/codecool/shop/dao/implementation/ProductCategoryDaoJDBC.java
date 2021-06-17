@@ -3,7 +3,6 @@ package com.codecool.shop.dao.implementation;
 import com.codecool.shop.dao.ProductCategoryDao;
 import com.codecool.shop.model.Product;
 import com.codecool.shop.model.ProductCategory;
-import com.codecool.shop.model.Supplier;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,12 +11,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductCategoryDaoDB extends DatabaseConnection implements ProductCategoryDao {
-    private static ProductCategoryDaoDB instance;
+public class ProductCategoryDaoJDBC extends DatabaseConnection implements ProductCategoryDao {
+    private static ProductCategoryDaoJDBC instance;
 
-    public static ProductCategoryDaoDB getInstance() {
+    public static ProductCategoryDaoJDBC getInstance() {
         if (instance == null) {
-            instance = new ProductCategoryDaoDB();
+            instance = new ProductCategoryDaoJDBC();
         }
         return instance;
     }

@@ -1,5 +1,7 @@
 package com.codecool.shop.config;
 
+import com.codecool.shop.controller.DetailedController;
+import com.codecool.shop.controller.Util;
 import com.codecool.shop.dao.ProductCategoryDao;
 import com.codecool.shop.dao.ProductDao;
 import com.codecool.shop.dao.SupplierDao;
@@ -10,6 +12,7 @@ import com.codecool.shop.model.Product;
 import com.codecool.shop.model.ProductCategory;
 import com.codecool.shop.model.Supplier;
 import com.codecool.shop.service.ActiveDataSourceService;
+import org.slf4j.Logger;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -40,7 +43,6 @@ public class Initializer implements ServletContextListener {
     }
 
     private void initializeMemDao() {
-        System.out.println("lefut");
         ProductDao productDataStore = ProductDaoMem.getInstance();
         ProductCategoryDao productCategoryDataStore = ProductCategoryDaoMem.getInstance();
         SupplierDao supplierDataStore = SupplierDaoMem.getInstance();
