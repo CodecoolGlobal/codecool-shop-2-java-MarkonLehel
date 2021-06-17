@@ -56,7 +56,6 @@ public class Product extends BaseModel {
     }
 
     public void setSupplier(Supplier supplier) {
-        System.out.println(supplier);
         this.supplier = supplier;
         this.supplier.addProduct(this);
     }
