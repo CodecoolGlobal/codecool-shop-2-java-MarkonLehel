@@ -41,8 +41,8 @@ public class ProductDaoJDBC extends DatabaseConnection implements ProductDao {
             String description = rs.getString(2);
             float price = rs.getFloat(3);
             String currency = rs.getString(4);
-            ProductCategory productCategory = productCategoryDaoDB.find(rs.getInt(5));
-            Supplier supplier = supplierDaoDB.find(rs.getInt(6));
+            ProductCategory productCategory = productCategoryDaoJDBC.find(rs.getInt(5));
+            Supplier supplier = supplierDaoJDBC.find(rs.getInt(6));
             Product product = new Product(name, price, currency,description, productCategory, supplier);
             return product;
         } catch (SQLException e) {
@@ -66,8 +66,8 @@ public class ProductDaoJDBC extends DatabaseConnection implements ProductDao {
                         rs.getFloat(2),
                         rs.getString(3),
                         rs.getString(4),
-                        productCategoryDaoDB.find(rs.getInt(5)),
-                        supplierDaoDB.find(rs.getInt(6)));
+                        productCategoryDaoJDBC.find(rs.getInt(5)),
+                        supplierDaoJDBC.find(rs.getInt(6)));
                 product.setId(rs.getInt(7));
                 result.add(product);
             }
@@ -94,8 +94,8 @@ public class ProductDaoJDBC extends DatabaseConnection implements ProductDao {
                         rs.getFloat(2),
                         rs.getString(3),
                         rs.getString(4),
-                        productCategoryDaoDB.find(rs.getInt(5)),
-                        supplierDaoDB.find(rs.getInt(6)));
+                        productCategoryDaoJDBC.find(rs.getInt(5)),
+                        supplierDaoJDBC.find(rs.getInt(6)));
                 product.setId(rs.getInt(7));
                 result.add(product);
             }
@@ -122,8 +122,8 @@ public class ProductDaoJDBC extends DatabaseConnection implements ProductDao {
                         rs.getFloat(2),
                         rs.getString(3),
                         rs.getString(4),
-                        productCategoryDaoDB.find(rs.getInt(5)),
-                        supplierDaoDB.find(rs.getInt(6)));
+                        productCategoryDaoJDBC.find(rs.getInt(5)),
+                        supplierDaoJDBC.find(rs.getInt(6)));
                 product.setId(rs.getInt(7));
                 result.add(product);
             }
