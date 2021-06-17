@@ -29,7 +29,7 @@ public class ProductDaoJDBC extends DatabaseConnection implements ProductDao {
     public Product find(int id) {
         try (Connection conn = dataSource.getConnection()) {
             String sql = """
-                        SELECT name, price, currency, product_category, supplier, id
+                        SELECT name, price, currency, description, product_category, supplier, id
                          FROM product WHERE id = ?""";
             PreparedStatement st = conn.prepareStatement(sql);
             st.setInt(1, id);
@@ -38,9 +38,9 @@ public class ProductDaoJDBC extends DatabaseConnection implements ProductDao {
                 return null;
             }
             String name = rs.getString(1);
-            String description = rs.getString(2);
-            float price = rs.getFloat(3);
-            String currency = rs.getString(4);
+            float price = rs.getFloat(2);
+            String currency = rs.getString(3);
+            String description = rs.getString(4);
             ProductCategory productCategory = productCategoryDaoJDBC.find(rs.getInt(5));
             Supplier supplier = supplierDaoJDBC.find(rs.getInt(6));
             Product product = new Product(name, price, currency,description, productCategory, supplier);
